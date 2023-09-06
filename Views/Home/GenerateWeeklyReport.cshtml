@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Generate Weekly Report";
+}
+<h1 class="display-4">Generate Weekly Report</h1>
+<p>Select two dates from the form below then press the Generate Report button to calculate the tithe and offering data from the selected dates.</p>
+<p>A message will show below if the report has been written or an error has occured.</p>
+<p>Only one report can be written per day. If you make another report within the same day, the previous report will be overwritten.</p>
+<h2 class="alert-danger">@ViewBag.Result</h2>
+<form method="post">
+    <p>
+        <label for="dateStartSelect">Date Start</label>
+        <input type="date" name="dateStartSelect" required />
+    </p>
+    <p>
+        <label for="dateEndSelect">Date End</label>
+        <input type="date" name="dateEndSelect" required />
+    </p>
+    <p>
+        <button type="submit">Generate Report</button>
+    </p>
+</form>
+<p>
+    <a asp-action="Index">Return to Main Menu</a>
+</p>

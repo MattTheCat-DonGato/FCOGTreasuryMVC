@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Main Menu</h1>
+    <p>Please select a link to go to that page.</p>
+</div>
+<div class="main-menu">
+    <p><a asp-action="CreateMember">Add New Church Member</a> - Add a new church member to the database in the Treasury App.</p>
+    <p><a asp-action="ViewMembers">View Current Church Members</a> - View all the Church Members recorded in the database and update or delete them if necessary.</p>
+    <p><a asp-action="SelectMember">Create an Entry Record</a> - Make new tithe and offering entry records based on the current Church Members you have in the database.</p>
+    <p><a asp-action="SelectRecords">Edit Entry Records</a> - Change any entry records you have entered in the database. (Use this only if you make any mistakes in creating entry reports)</p>
+    <p><a asp-action="GenerateWeeklyReport">Generate Report</a> - Generate a report based on the records selected from 2 different dates.</p>
+    <p><a asp-action="GenerateIndividualReport">Generate Individual Report</a> - Generate Individual Reports that can be helpful when working income tax for the coming year.</p>
+</div>

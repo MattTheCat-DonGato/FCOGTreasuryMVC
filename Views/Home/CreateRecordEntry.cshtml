@@ -1,0 +1,88 @@
+﻿@model RecordEntry
+@{
+    ViewData["Title"] = "Create Entry Record";
+}
+<h1 class="display-4">Create Entry Record</h1>
+<p>Enter the tithe and offering information. You cannot edit the Church Member information.</p>
+<p>If the information is correct, the record will be added to the database, and the screen will return to the previous page to select a church member.</p>
+<p>If there is an error with the form, an alert will be shown below these instructions detailing why it failed to create the record.</p>
+<p>Based on the error: input or change the data entered, and resubmit the form.</p>
+<h2 class="alert-danger">@ViewBag.Result</h2>
+<form method="post">
+    <p>
+        <label asp-for="FirstName">First Name:</label>
+        <input asp-for="FirstName" readonly/>
+    </p>
+    <p>
+        <label asp-for="LastName">Last Name:</label>
+        <input asp-for="LastName" readonly />
+    </p>
+    <p>
+        <label asp-for="JointFirstName">Joint First Name:</label>
+        <input asp-for="JointFirstName" readonly/>
+    </p>
+    <p>
+        <label for="gaveBy">Gave By:</label>
+        <select name="gaveBy">
+            <option value="None">None</option>
+            <option value="Cash And Check">Cash And Check</option>
+            <option value="Cash">Cash</option>
+            <option value="Check">Check</option>
+            <option value="Zelle">Zelle</option>
+            <option value="Other">Other</option>
+        </select>
+    </p>
+    <p>
+        <label for="checkNumber">Check Number: (if there's no check, leave blank or input 0)</label>
+        <input name="checkNumber" />
+    </p>
+    <p>
+        <label for="titheAmount">Tithe Amount: (If entering for offering only, leave blank or input 0)</label>
+        <input name="titheAmount" />
+    </p>
+    <p>
+        <label for="offerType1">Offer Type 1: (Set to None if there is no offering)</label>
+        <select name="offerType1">
+            <option value="None">None</option>
+            <option value="Sunday School">Sunday School</option>
+            <option value="General Offering">General Offering</option>
+            <option value="Mission March">Mission March</option>
+            <option value="Love Offering">Love Offering</option>
+            <option value="Seed Offering">Seed Offering</option>
+            <option value="Chicken Barbecue">Chicken Barbecue</option>
+            <option value="Pastor Dimetrio">Pastor Dimetrio</option>
+            <option value="Pastor Dan">Pastor Dan</option>
+            <option value="Los Lirios">Los Lirios</option>
+        </select>
+    </p>
+    <p>
+        <label for="offerAmount">Offering Amount:(If entering tithe only or no offering, leave blank or input 0)</label>
+        <input name="offerAmount" />
+    </p>
+    <p>
+        <label for="offerType2">Offer Type 2: (Set to None if there is no offering)</label>
+        <select name="offerType2">
+            <option value="None">None</option>
+            <option value="Sunday School">Sunday School</option>
+            <option value="General Offering">General Offering</option>
+            <option value="Mission March">Mission March</option>
+            <option value="Love Offering">Love Offering</option>
+            <option value="Seed Offering">Seed Offering</option>
+            <option value="Chicken Barbecue">Chicken Barbecue</option>
+            <option value="Pastor Dimetrio">Pastor Dimetrio</option>
+            <option value="Pastor Dan">Pastor Dan</option>
+            <option value="Los Lirios">Los Lirios</option>
+        </select>
+    </p>
+    <p>
+        <label for="offerAmount2">2nd Offering Amount:(If entering tithe only, leave blank or input 0)</label>
+        <input name="offerAmount2" />
+    </p>
+    <p>
+        <button type="submit">Add Record</button>
+    </p>  
+</form>
+<p>
+    <a asp-action="SelectMember">Return to Previous Screen</a>
+</p>
+

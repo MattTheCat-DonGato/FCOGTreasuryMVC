@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RecordEntry>
+@{
+    ViewData["Title"] = "Select Record Entry";
+}
+<h1 class="display-4">Select Entry Record</h1>
+<p>From the date picker below please enter a valid date to query some records.</p>
+<p>If records are found they will be displayed in a table below the form.</p>
+<p>From those records, select one to update.</p>
+<p>Note: You cannot change the church member data, only tithe and offering data.</p>
+<form method="post">
+    <p>
+        <label for="dateSelect">Date</label>
+        <input type="date" name="dateSelect" required/>
+        <button type="submit">Submit</button>
+    </p>
+</form>
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr>
+            <th>Record ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Joint Account?</th>
+            <th>Joint First Name</th>
+            <th>Gave By</th>
+            <th>Tithe</th>
+            <th>1st Offering Type</th>
+            <th>Offering Amount</th>
+            <th>2nd Offering Type</th>
+            <th>Offering Amount</th>
+            <th>Check Number</th>
+            <th>Date Recorded</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr><td colspan="14" class="text-center">No Data</td></tr>
+        }
+        else
+        {
+            foreach (RecordEntry record in Model)
+            {
+                <tr>
+                    <td>@record.Id</td>
+                    <td>@record.FirstName</td>
+                    <td>@record.LastName</td>
+                    @if(record.JointAccount)
+                    {
+                        <td>Yes</td>
+                        <td>@record.JointFirstName</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                        <td>None</td>
+                    }
+                    <td>@record.GaveBy</td>
+                    <td>$@record.Tithe.ToString("N2")</td>
+                    <td>@record.OfferType</td>
+                    <td>$@record.Offering.ToString("N2")</td>
+                    <td>@record.OfferType2</td>
+                    <td>$@record.Offering2.ToString("N2")</td>
+                    <td>@record.CheckNumber</td>
+                    <td>@record.DateRecorded</td>
+                    <td><a asp-action="UpdateRecordEntry" asp-route-id="@record.Id">Update</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Index">Return to Main Menu</a>
+</p>

@@ -1,0 +1,32 @@
+﻿@model ChurchMember
+
+@{
+    ViewData["Title"] = "Update Church Member";
+}
+<h1>Update Church Member</h1>
+<p>Please enter the new data that will be updated for this church member.</p>
+<p>If you don't want to make a change you may hit the back button on the browser to return to the previous page.</p>
+<h2 class="alert-danger">@ViewBag.Result</h2>
+<form method="post">
+    <p>
+        <label asp-for="FirstName">First Name:</label>
+        <input asp-for="FirstName" required/>
+    </p>
+    <p>
+        <label asp-for="LastName">Last Name:</label>
+        <input asp-for="LastName" required/>
+    </p>
+    <p>
+        <label asp-for="JointAccount">Is Joint Account?:</label>
+        <input type="radio" asp-for="JointAccount" value="true" />Yes
+        <input type="radio" asp-for="JointAccount" value="false" />No
+    </p>
+    <p>
+        <label asp-for="JointFirstName">Joint First Name (If Applicable):</label>
+        <input asp-for="JointFirstName" />
+    </p>
+    <p>
+        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+    </p>
+
+</form>

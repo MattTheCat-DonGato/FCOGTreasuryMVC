@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ChurchMember>
+
+@{
+    ViewData["Title"] = "Generate Individual Report";
+}
+<h1 class="display-4">Generate Individual Report</h1>
+<p>Select a church member below then provide two dates to select the records from.</p>
+<p>If an error occurs, a message will appear showing what happened and how to fix it.</p>
+<p>Successful reports will be written in the Indivudual Reports Folder.</p>
+<p>Only one report can be written with the same members and current date per day.</p>
+<p>If the report is written for the same church member and current day, then it will be overwritten.</p>
+<h2 class="alert-danger">@ViewBag.Result</h2>
+<form method="post">
+    <p>
+    @if (Model == null)
+    {
+        <label>No Church Member Data</label>
+    }
+    else
+    {
+        <label for="chosenMember"></label>
+        <select name="chosenMember">
+        @foreach(ChurchMember member in Model)
+        {
+            if(member.JointAccount)
+            {
+                <option value="@member.Id">@member.FirstName + @member.JointFirstName @member.LastName</option>
+            }
+            else
+            {
+                <option value="@member.Id">@member.FirstName @member.LastName</option>
+            }
+        }
+        </select>
+    }
+    </p>
+    <p>
+        <label for="startDate">Date Start</label>
+        <input type="date" name="startDate" required />
+    </p>
+    <p>
+        <label for="endDate">Date End</label>
+        <input type="date" name="endDate" required />
+    </p>
+    <p>
+        <button type="submit">Generate Individual Report</button>
+    </p>
+</form>
+<p>
+    <a asp-action="Index">Return to Main Menu</a>
+</p>

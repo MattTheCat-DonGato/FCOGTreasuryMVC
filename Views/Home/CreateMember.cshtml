@@ -1,0 +1,36 @@
+﻿@model ChurchMember
+@{
+    ViewData["Title"] = "Create Church Member";
+}
+<h1>Create Church Member</h1>
+<div id="instructions_section">
+    <p>Use this page to add any brand new church members to be added to our application's database.</p>
+</div>
+<h2 class="alert-danger">@ViewBag.Result</h2>
+    <form method="post">
+    <p>
+        <label asp-for="FirstName">First Name:</label>
+        <input asp-for="FirstName" required=""/>
+    </p>
+    <p>
+        <label asp-for="LastName">Last Name:</label>
+        <input asp-for="LastName" required=""/>
+    </p>
+    <p>
+        <label asp-for="JointAccount">Is Joint Account?</label>
+        <input type="radio" asp-for="JointAccount" value="true" />Yes
+        <input type="radio" asp-for="JointAccount" value="false" />No
+    </p>
+    <p>
+        <label asp-for="JointFirstName">Joint Accounts First Name: (If applicable)</label>
+        <input asp-for="JointFirstName"/>
+    </p>
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+<p>
+    <a asp-action="Index">Return to Main Menu</a>
+</p>
+
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ChurchMember>
+@{
+    ViewData["Title"] = "View Church Members";
+}
+<h1 class="display-4">List of Church Members</h1>
+<h2 class="alert-light">@ViewBag.Result</h2>
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Joint Account?</th>
+            <th>Joint Account's First Name</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr><td colspan="6" class="text-center">No Data</td></tr>
+        }
+        else
+        {
+            @foreach (ChurchMember ch in Model)
+            {
+                <tr>
+                    <td>@ch.FirstName</td>
+                    <td>@ch.LastName</td>
+                    @if (ch.JointAccount)
+                    {
+                        <td>Yes</td>
+                        <td>@ch.JointFirstName</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                        <td>None</td>
+                    }
+                    <td><a asp-action="UpdateMember" asp-route-id="@ch.Id">Update</a></td>
+                    <td><form asp-action="DeleteMember" method="post" asp-route-id="@ch.Id">
+                        <button>Delete</button>
+                        </form></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to Main Menu</a>
